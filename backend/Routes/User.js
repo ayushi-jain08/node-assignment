@@ -1,9 +1,8 @@
 import express from "express";
 import {
+  ForgetPass,
+  OtpVerify,
   RegisterUser,
-  ResetPassword,
-  SendResetPasswordLink,
-  VerifyUser,
   loginUser,
 } from "../Controller/User.js";
 import { loginvalidator, registervalidator } from "../Utils/Validator.js";
@@ -11,7 +10,7 @@ const router = express.Router();
 
 router.post("/register", registervalidator, RegisterUser);
 router.post("/login", loginvalidator, loginUser);
-router.post("/sendpasswordlink", SendResetPasswordLink);
-router.get("/forgotpassword/:id/:token", VerifyUser);
-router.post("/resetpassword/:id/:token", ResetPassword);
+router.post("/forgot-password", ForgetPass)
+router.post("/verify-otp", OtpVerify)
+
 export default router;

@@ -1,69 +1,63 @@
 import User from "../Model/User.js";
 import Jwt from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
-import nodemailer from "nodemailer";
 import { errorHandler } from "../Utils/ErrorrValidator.js";
 import { validationResult } from "express-validator";
+import logger from "../Utils/pino.js";
+import Otp from "../Model/Otp.js";
+import sendEmail from "../Utils/email.utils.js";
+import generateOTP from "../Utils/generateOtp.utils.js";
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASS,
-  },
-});
 //=============REGISTER USER===================//
 export const RegisterUser = async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
   try {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      // Pass the validation errors to the next middleware
       return next(errorHandler(200, errors.array()));
     }
     let user;
     const hashPassword = bcryptjs.hashSync(password, 10);
-    {
+    const userExist = await User.findOne({ username });
+    if (userExist) {
+      logger.error("This email already exist")
+      next(errorHandler(400, "This email already exist"));
+    }
+    
       user = new User({
-        name,
+        username,
         email,
         password: hashPassword,
       });
-    }
-    const userExist = await User.findOne({ email });
-    if (userExist) {
-      next(errorHandler(400, "This email already exist"));
-    }
     await user.save();
     res.status(200).json({
-      msg: "successfully register",
-      user: user._id,
-      name,
-      email,
+      msg: "User successfully register",
     });
   } catch (error) {
-    console.log(error);
+    logger.error('Error at User.controller while registering user', error)
     next(error);
   }
 };
+
 //======================LOGIN USER======================//
 export const loginUser = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   try {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      // Pass the validation errors to the next middleware
       return next(errorHandler(200, errors.array()));
     }
-    const validUser = await User.findOne({ email });
+    const validUser = await User.findOne({ username });
     if (!validUser) {
+      logger.error("User not found")
       next(errorHandler(404, "User not found"));
     }
     const ComparePass = bcryptjs.compareSync(password, validUser.password);
     if (!ComparePass) {
-      return next(errorHandler(401, "Inavlid Credentials"));
+      logger.error("Invalid Credentials")
+      return next(errorHandler(401, "Invalid Credentials"));
     } else {
       const token = Jwt.sign({ id: validUser._id }, process.env.SECRET_KEY);
       const { password: pass, ...otherDeatils } = validUser._doc;
@@ -73,94 +67,67 @@ export const loginUser = async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    logger.error('Error at User.controller while login user', error)
     next(error);
   }
 };
 
-// ===============SEND RESET PASSWORD LINK=================
-export const SendResetPasswordLink = async (req, res, next) => {
-  const { email } = req.body;
-
-  if (!email) {
-    next(errorHandler(401, "Enter Your Email"));
-  }
+// ---------------- forget password controller  ------------------------
+export const ForgetPass = async (req, res,next) => {
+  const email = req.body.email;
   try {
-    const userFind = await User.findOne({ email });
-
-    if (!userFind) {
-      next(errorHandler(404, "User not found"));
+    if (!email) {
+      logger.error('email is required');
+     next(errorHandler(400,"Email is required"))
     }
-    const token = Jwt.sign({ id: userFind._id }, process.env.SECRET_KEY);
 
-    const setUserToken = await User.findByIdAndUpdate(
-      { _id: userFind._id },
-      { verifytoken: token },
-      { new: true }
-    );
+    // Check if the email exists in the User collection
+    const user = await User.findOne({ email });
+    if (!user) {
+      logger.error('User with this email does not exist');
+      return next(errorHandler(404, "User with this email does not exist"));
+    }
+    const otp = generateOTP();
+    const options = { email, otp };
+    const emailResponse = await sendEmail(options);
 
-    if (setUserToken) {
-      const mailOptions = {
-        from: "ayushijain0807@gmail.com",
-        to: email,
-        subject: "Sending Email For Password Reset",
-        text: `This Link valid For 5 MINUTES http://localhost:5050/passwordreset/${userFind._id}/${setUserToken.verifytoken}`,
-      };
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log("Error", error);
-          res.status(401).json({ message: "email not send" });
-        } else {
-          console.log("Email sent" + info.response);
-          res
-            .status(200)
-            .json({ status: 201, message: "email send successfully" });
-        }
-      });
+    if (emailResponse.success) {
+      await Otp.create({ email, otp, createdAt: new Date() });
+      logger.info(emailResponse.message);
+      return res.json({ message: emailResponse.message });
+    } else {
+      next(errorHandler(400,emailResponse.error))
     }
   } catch (error) {
-    res.status(401).json({ message: "Invalid User" });
+    logger.error(error);
+    next(error)
   }
-};
+}
 
-// ============VERIFY USER=====================
-export const VerifyUser = async (req, res, next) => {
-  const { id, token } = req.params;
-
+// ---------------- otp-verify & password-change controller  ------------------------
+export const OtpVerify = async (req, res,next) => {
+  const { email, otp, password } = req.body;
   try {
-    const validUser = await User.findOne({ _id: id, verifytoken: token });
-    if (!validUser) {
-      return next(errorHandler(401, "user not found"));
+    if (!email || !password || !otp) {
+      logger.error('email password and otp are required');
+      next(errorHandler(400,'email password and otp are required'))
     }
-    res.status(200).json({ validUser });
+
+    const storedOtpDoc = await Otp.findOne({ email }).sort({ 'created_at': -1 }).lean();
+    if (!storedOtpDoc || storedOtpDoc.otp !== otp.toString()) {
+      logger.error("Oops! Verification failed. The OTP entered is incorrect")
+      next(errorHandler(403,"Oops! Verification failed. The OTP entered is incorrect"))
+    }
+
+    const hashPassword = bcryptjs.hashSync(password, 10);
+    await User.findOneAndUpdate({ email }, { $set: { password: hashPassword } }, { returnOriginal: false });
+      // Delete the OTP document after successfully changing the password
+      await Otp.deleteOne({ email });
+     logger.info("otp verified and password changed successfully")
+    res.status(201).json({ message: "otp verified and password changed successfully" });
   } catch (error) {
-    next(error);
+    logger.error(error);
+   next(error)
   }
-};
+}
 
-//============RESET PASSWORD==============//
-export const ResetPassword = async (req, res, next) => {
-  const { id, token } = req.params;
-
-  const { password } = req.body;
-  try {
-    const validUser = await User.findOne({ _id: id, verifytoken: token });
-
-    if (!validUser) {
-      return next(errorHandler(401, "user not found"));
-    }
-    if (!password) {
-      next(errorHandler(401, "Enter new password"));
-    }
-    const newPassword = await bcryptjs.hashSync(password, 12);
-
-    const setNewUserPassword = await User.findByIdAndUpdate(
-      { _id: id },
-      { password: newPassword }
-    );
-    setNewUserPassword.save();
-    res.status(201).json({ status: 201, setNewUserPassword });
-  } catch (error) {
-    next(error);
-  }
-};

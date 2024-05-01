@@ -1,0 +1,81 @@
+[ Date 01/05/24 20:37:43] ERROR: Invalid Credentials
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 15552"
+[ Date 01/05/24 20:39:23] ERROR: Cannot access 'htmlTemp' before initialization
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 15552"
+[ Date 01/05/24 20:40:29] ERROR: user is not defined
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 15416"
+[ Date 01/05/24 20:42:26] ERROR: user is not defined
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 17340"
+[ Date 01/05/24 20:43:32] ERROR: user is not defined
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18056"
+[ Date 01/05/24 20:44:02] INFO: Email sent successfully:
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 15860"
+[ Date 01/05/24 20:44:02] INFO: Email sent Successfully
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 15860"
+[ Date 01/05/24 20:48:02] ERROR: email password and otp are required
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 12468"
+[ Date 01/05/24 20:48:02] ERROR: Cannot read properties of undefined (reading 'findOne')
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 12468"
+[ Date 01/05/24 20:48:47] ERROR: email password and otp are required
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 6384"
+[ Date 01/05/24 20:48:47] ERROR: passHash is not defined
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 6384"
+[ Date 01/05/24 20:49:45] ERROR: email password and otp are required
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 3164"
+[ Date 01/05/24 20:49:45] ERROR: Illegal arguments: undefined, string
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 3164"
+[ Date 01/05/24 20:54:16] ERROR: Invalid Credentials
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 20:57:49] INFO: Email sent successfully:
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 20:57:50] INFO: Otp for verification sent successfully on your email
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:00:13] ERROR: This email already exist
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:00:13] ERROR: Error at User.controller while registering user
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:01:08] INFO: Email sent successfully:
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:01:08] INFO: Otp for verification sent successfully on your email
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:02:23] INFO: otp verified and password changed
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:02:30] ERROR: Oops! Verification failed. The OTP entered is incorrect
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:02:31] INFO: otp verified and password changed
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:02:31] ERROR: Cannot set headers after they are sent to the client
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:04:04] INFO: Email sent successfully:
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:04:04] INFO: Otp for verification sent successfully on your email
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
+[ Date 01/05/24 21:06:28] INFO: otp verified and password changed
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19112"
