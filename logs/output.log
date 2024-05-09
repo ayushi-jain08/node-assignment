@@ -79,3 +79,93 @@
 [ Date 01/05/24 21:06:28] INFO: otp verified and password changed
     processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
     processId: "P_ID:- 19112"
+[ Date 01/05/24 21:09:14] ERROR: This email already exist
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:09:14] ERROR: Error at User.controller while registering user
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:10:11] INFO: Email sent successfully:
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:10:12] INFO: Otp for verification sent successfully on your email
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:11:21] INFO: otp verified and password changed successfully
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:12:24] INFO: Email sent successfully:
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:12:24] INFO: Otp for verification sent successfully on your email
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:13:04] INFO: otp verified and password changed successfully
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 01/05/24 21:13:17] ERROR: Invalid Credentials
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 18800"
+[ Date 08/05/24 17:00:52] ERROR: Error in CreatePost :
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 4428"
+[ Date 08/05/24 17:02:52] ERROR:
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 16832"
+[ Date 08/05/24 17:17:43] ERROR: Error in CreatePost :
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 14048"
+[ Date 08/05/24 17:18:08] ERROR: Error in CreatePost :
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 20496"
+[ Date 08/05/24 18:30:44] ERROR: Error in UpdatePost :
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19036"
+[ Date 08/05/24 18:36:43] ERROR: Error in DeletePost :
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 14852"
+[ Date 08/05/24 19:04:22] ERROR: Error at to post.controller getAllPost TypeError: ObjectId is not a constructor
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 11424"
+[ Date 08/05/24 19:05:54] ERROR: Error at to post.controller getAllPost TypeError: Class constructor ObjectId cannot be invoked without 'new'
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 8332"
+[ Date 08/05/24 20:54:28] ERROR: Error at to comment.controller commentDeleted ReferenceError: Comment is not defined
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 7884"
+[ Date 08/05/24 20:56:22] ERROR: Error at to comment.controller commentDeleted ReferenceError: http is not defined
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 21608"
+[ Date 08/05/24 20:59:23] ERROR: Error at to comment.controller commentPost ValidationError: userId: Path `userId` is required.
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 22232"
+[ Date 08/05/24 21:00:57] ERROR: Error at to comment.controller commentPost ValidationError: userId: Path `userId` is required.
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 21156"
+[ Date 08/05/24 21:30:59] ERROR: Error at to comment.controller likePost CastError: Cast to ObjectId failed for value "663b7e2ad1725010d8cd2aab\n" (type string) at path "_id" for model "Post"
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 17624"
+[ Date 08/05/24 21:32:27] ERROR: Error at to comment.controller likePost CastError: Cast to ObjectId failed for value "663b7e2ad1725010d8cd2aab\n" (type string) at path "_id" for model "Post"
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 20440"
+[ Date 08/05/24 21:33:22] ERROR: Error at to comment.controller likePost CastError: Cast to ObjectId failed for value "663b7e2ad1725010d8cd2aab\n" (type string) at path "_id" for model "Post"
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 19680"
+[ Date 08/05/24 21:39:06] ERROR: Error at to comment.controller likePost CastError: Cast to ObjectId failed for value "663b7e2ad1725010d8cd2aab\n" (type string) at path "_id" for model "Post"
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 9076"
+[ Date 08/05/24 21:40:03] ERROR: Error at to comment.controller likePost CastError: Cast to ObjectId failed for value "663b7e2ad1725010d8cd2aab\n" (type string) at path "_id" for model "Post"
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 15724"
+[ Date 08/05/24 21:40:30] ERROR: Error at to comment.controller likePost CastError: Cast to ObjectId failed for value "663b7e2ad1725010d8cd2aab\n" (type string) at path "_id" for model "Post"
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 1412"
+[ Date 08/05/24 21:40:32] ERROR: Error at to comment.controller likePost CastError: Cast to ObjectId failed for value "663b7e2ad1725010d8cd2aab\n" (type string) at path "_id" for model "Post"
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 1412"
+[ Date 08/05/24 21:59:07] ERROR: Error at to post.controller getPost MongoServerError: PlanExecutor error during aggregation :: caused by :: input to $map must be an array not object
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 14440"
+[ Date 08/05/24 22:13:29] ERROR: Error at to post.controller getPost MongoServerError: PlanExecutor error during aggregation :: caused by :: input to $map must be an array not object
+    processTitle: "PTitle:- C:\WINDOWS\system32\cmd.exe "
+    processId: "P_ID:- 20252"

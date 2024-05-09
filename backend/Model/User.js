@@ -1,6 +1,5 @@
-import mongoose from "mongoose"; // Erase if already required
+import mongoose from "mongoose";
 
-// Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -21,6 +20,6 @@ var userSchema = new mongoose.Schema({
 });
 
 //Export the model
-const user = mongoose.model("user", userSchema);
+const User = mongoose.model("user", userSchema);
 
-export default user;
+export default User;
