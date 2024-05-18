@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import logger from "../Utils/pino.js";
 dotenv.config();
 
 const connectDB = async () => {
   try {
     const connect = await mongoose.connect(process.env.CONNECTION);
-    console.log(`mongodb connect successfully`);
+    logger.info(`mongodb connect successfully`);
   } catch (error) {
-    console.log(`error in mongodb ${error}`);
+    logger.info(`error in mongodb ${error}`);
   }
 };
 

@@ -8,6 +8,9 @@ import cors from "cors";
 import post from './Routes/Post.js'
 import fileUpload from 'express-fileupload'
 import comment from './Routes/Comment.js'
+import { sendError } from "./Services/general.hepler.js";
+import httpCode from "./Config/httpConstant.config.js";
+import logger from "./Utils/pino.js";
 
 app.use(cors());
 app.use(express.json());
@@ -23,6 +26,10 @@ app.use("/api/user", user);
 app.use("/api/post", post);
 app.use("/api/comment", comment)
 
+app.use((req, res, next) => {
+  sendError(res, httpCode.not_found_error, 'Resource Not Found')
+})
+
 //=====================Error Handling Middleware========================//
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -37,5 +44,5 @@ connectDB();
 const PORT = process.env.PORT || 7000;
 
 app.listen(PORT, async () => {
-  console.log(`server is running on port ${PORT}`);
+  logger.info(`server is running on port ${PORT}`);
 });

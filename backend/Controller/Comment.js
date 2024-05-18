@@ -41,7 +41,7 @@ export const commentPost = async (req, res, next) => {
         return Res(res, httpCode.success_code, "Comment successfully");
 
     } catch (error) {
-        logger.error(`Error at to comment.controller commentPost ${error}`)
+        logger.error(`Error at to commentPost controller ${error}`)
         next(error)
 
     }
@@ -69,7 +69,7 @@ export const commentUpdate = async (req, res, next) => {
         return Res(res, httpCode.success_code, "Comment Updated successfully");
 
     } catch (error) {
-        logger.error(`Error at to comment.controller commentUpdate ${error}`)
+        logger.error(`Error at to commentUpdate controller ${error}`)
         next(error)
     }
 }
@@ -138,7 +138,7 @@ export const commentDeleted = async (req, res, next) => {
 
 
     } catch (error) {
-        logger.error(`Error at to comment.controller commentDeleted ${error}`)
+        logger.error(`Error at to commentDeleted controller ${error}`)
         next(error)
     }
 }
@@ -166,7 +166,7 @@ export const likePost = async (req, res, next) => {
             return Res(res, httpCode.success_code, "you liked this post")
         }
     } catch (error) {
-        logger.error(`Error at to comment.controller likePost ${error}`)
+        logger.error(`Error at to likePost controller ${error}`)
         next(error)
     }
 }

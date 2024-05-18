@@ -6,7 +6,8 @@ const httpCode = {
     "internal_server_error": 500,
     "not_found_error": 404,
     "insufficient_code": 406,
-    "required_code": 204
+    "required_code": 204,
+    "created_code": 201
 };
 
 export default httpCode;

@@ -13,4 +13,9 @@ const Res = (res, status, message, data) => {
     return res.status(status).json(res_obj)
 
 };
+
+export const sendError = (res, status, message) => {
+    res.status(status).json({ error: { status, message } });
+};
+
 export default Res

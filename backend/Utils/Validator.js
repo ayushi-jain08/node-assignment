@@ -1,5 +1,6 @@
 import { check, param } from "express-validator";
 
+// Validation On Registration
 export const registervalidator = [
   check("username", "Name is required").not().isEmpty().trim(),
   check("email", "Please include a valid email").isEmail().normalizeEmail({
@@ -8,20 +9,20 @@ export const registervalidator = [
   check("password", "Password is required").not().isEmpty(),
 ];
 
+// Validation On Login
 export const loginvalidator = [
   check("username", "Name is required").not().isEmpty().trim(),
   check("password", "Password is required").not().isEmpty(),
 ];
 
+// Validation On Post Creation
 export const postValidator = [
-  check("photo")
-    .custom((value, { req }) => {
-      // Check if req.files.photo exists in the request body
-      if (!req.files || !req.files.photo) {
-        throw new Error("Image file is required in the request body");
-      }
-      return true;
-    }),
+  check("photo").custom((value, { req }) => {
+    if (!req.files || !req.files.photo) {
+      throw new Error("Image file is required in the request body");
+    }
+    return true;
+  }),
   check("title")
     .optional({ nullable: true })
     .isString()
@@ -29,6 +30,7 @@ export const postValidator = [
     .trim(),
 ];
 
+// Validation On Comment
 export const commentValidator = [
   param("postId")
     .notEmpty()
@@ -39,5 +41,5 @@ export const commentValidator = [
   check("parent")
     .optional({ nullable: true })
     .isMongoId()
-    .withMessage("Invalid Parent Comment ID")
-]
+    .withMessage("Invalid Parent Comment ID"),
+];
